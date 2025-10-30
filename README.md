@@ -1,13 +1,33 @@
-
-# ESP8266 Temperature & Humidity Monitor
-
-## Mô tả
-Dự án đọc nhiệt độ và độ ẩm dùng cảm biến DHT11 và ESP8266.
-
-## Phần cứng
+## Hardware
 - ESP8266 (NodeMCU)
-- DHT11
-- LCD
+- DHT11 sensor
+- I2C LCD 16x2
+- Jumper wires
 
-## Chức năng
-- Đọc & in nhiệt độ/độ ẩm lên màn LCD
+## Wiring
+| DHT11 | ESP8266 |
+|------|--------|
+| VCC  | 3.3V   |
+| GND  | GND    |
+| DATA | D3     |
+| SCL | D1     |
+| SDA | D2     |
+
+## Features
+- Read temperature & humidity
+- Display data on LCD
+- Real-time monitoring
+
+## Setup
+
+Install Arduino IDE
+Add ESP8266 board
+Install libraries:
+- BlynkSimpleEsp8266
+- DHT sensor library
+- LiquidCrystal_I2C
+Upload code
+
+//Ket qua
+Temp: 28°C  
+Humidity: 60%
