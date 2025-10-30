@@ -1,0 +1,70 @@
+#define BLYNK_TEMPLATE_ID "TMPL6iZLPuYY1"
+#define BLYNK_TEMPLATE_NAME "Truyenthongkhongday"
+// khai bao thu vien
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include <DHT.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+//setup wifi
+
+char auth[] = "v4lWAZgI1XrhSWG7_XR7k4YtxW3CYtax";
+char ssid[] = "Tang 1";      
+char pass[] = "1324567890";
+
+// Cảm biến và thiết bị
+#define DHTPIN D3
+#define DHTTYPE DHT11
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+// DHT sensor
+DHT dht(DHTPIN, DHTTYPE);
+
+
+void setup() 
+{
+
+  Serial.begin(9600);
+  dht.begin();
+  lcd.begin();
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("Connecting...");
+  
+  // WiFi + Blynk
+  Blynk.begin(auth, ssid, pass);
+  lcd.clear();
+  lcd.print("Connected");
+  delay(2000);
+  lcd.clear();
+}
+
+
+void loop() 
+{
+  Blynk.run();
+  
+  float temp = dht.readTemperature();
+  float hum = dht.readHumidity();
+
+  // Gửi lên Blynk app
+  Blynk.virtualWrite(V0, temp);
+  Blynk.virtualWrite(V1, hum);
+
+// hien thi thong so len LCD
+  lcd.clear();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: "); 
+  lcd.print(temp);
+  lcd.print((char)223); //ký tự độ 
+  lcd.print("C");
+
+  lcd.setCursor(0, 1);
+  lcd.print("Humidity: "); 
+  lcd.print(hum);
+  lcd.print("%");
+
+  delay(2000);
+  }
