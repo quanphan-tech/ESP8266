@@ -28,6 +28,6 @@ Install libraries:
 - LiquidCrystal_I2C
 Upload code
 
-## Ket qua
+## Result
 Temp: 28°C  
 Humidity: 60%
