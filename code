@@ -9,9 +9,10 @@
 
 //setup wifi
 
-char auth[] = "v4lWAZgI1XrhSWG7_XR7k4YtxW3CYtax";
-char ssid[] = "Tang 1";      
-char pass[] = "1324567890";
+char auth[] = "YOUR_BLYNK_TOKEN_HERE";
+char ssid[] = "YOUR_WIFI_NAME";
+char pass[] = "YOUR_WIFI_PASSWORD";
+
 
 // Cảm biến và thiết bị
 #define DHTPIN D3
